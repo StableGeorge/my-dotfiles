@@ -30,7 +30,7 @@ from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from qtile_extras.widget.decorations import RectDecoration
+
 import colors
 
 mod = "mod4"
@@ -85,7 +85,7 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "space", lazy.spawn('/home/george/.config/rofi/launchers/type-1/launcher.sh'), desc="Spawn a command using a prompt widget"),
+    Key([mod], "escape", lazy.spawn('/home/george/.config/rofi/launchers/type-1/launcher.sh'), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "c", lazy.spawn('/home/george/.config/rofi/powermenu/type-1/powermenu.sh')),
     Key([mod, "control"], "f", lazy.spawn("flameshot gui")),
     ]
@@ -130,10 +130,10 @@ for i in groups:
         ]
     )
 
-colors = colors.OceanicNext
+colors = colors.DoomOne
 
 layout_theme = {"border_width": 2,
-                "margin": 18,
+                "margin": 13,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
@@ -157,7 +157,7 @@ layouts = [
 
 widget_defaults = dict(
     font="Ubuntu Bold",
-    fontsize=16,
+    fontsize=15,
     padding=3,
     background=colors[0],
     
@@ -177,7 +177,7 @@ screens = [
                     ),
                 widget.TextBox(
                     text="|", 
-                    fontsize=30,
+                    fontsize=25,
                     font="Ubuntu Normal",
                     ),
                 widget.WindowName(
@@ -188,7 +188,7 @@ screens = [
                     ),
                 widget.Spacer(),
                 widget.TextBox(
-                    text=" ",
+                    text="",
                     padding = 0,
                     foreground = colors[3]
                     ),
@@ -197,7 +197,7 @@ screens = [
                     padding = 7
                     ),
                 widget.Memory(
-                    foreground = colors[1],
+                    foreground = colors[5],
                     measure_mem='G',
                     format = ' {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',
                     padding = 7
@@ -209,7 +209,7 @@ screens = [
                    ),
                 widget.Clock(
                     foreground = colors[6],
-                    format="  %A %d/%m/%Y %I:%M %p",
+                    format="  %A %I:%M %p",
                     padding = 7
                     )
             ],

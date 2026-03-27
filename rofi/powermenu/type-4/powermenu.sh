@@ -73,8 +73,6 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			elif [[ "$DESKTOP_SESSION" == 'qtile' ]]; then
-				qtile cmd-obj -o cmd -f shutdown
 			fi
 		fi
 	else
@@ -95,7 +93,7 @@ case ${chosen} in
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
-			/home/george/.config/scripts/lock
+			i3lock
 		fi
         ;;
     $suspend)
