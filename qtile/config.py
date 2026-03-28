@@ -208,10 +208,16 @@ screens = [
                     format = '  {essid}',
                     interface = "wlp2s0",
                     ),
-                #widget.Volume(
+                #widget.PulseVolume(
                 #   foreground = colors[4],
                 #   padding = 8,
                 #   fmt = '  Vol: {}',
+                #   step=5,
+                #    mouse_callbacks={
+                #        "Button1": lambda: qtile.cmd_spawn("pavucontrol"),
+                #        "Button4": lambda: qtile.cmd_spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"),
+                #        "Button5": lambda: qtile.cmd_spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"),
+                #     },
                 #   ),
                 widget.Battery(
                     foreground = colors[4],
@@ -221,7 +227,7 @@ screens = [
                     energy_now_file="/sys/class/power_supply/CMB1/charge_now",
                     energy_full_file="/sys/class/power_supply/CMB1/charge_full",
                     power_now_file="/sys/class/power_supply/CMB1/power",
-                    format=" {percent:2.0%}",
+                    format="  {percent:2.0%}",
                     ),
                 widget.Clock(
                     foreground = colors[6],
